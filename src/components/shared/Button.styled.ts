@@ -1,8 +1,11 @@
 import styled, { css } from 'styled-components';
 
-import { buttonInteract } from '../../utils/mixins';
-
+import { buttonInteract, flexMixin } from '../../utils/mixins';
 import { BaseProps } from '../../utils/models/props.model';
+
+type CtaProps = {
+    readonly includesSVG: boolean;
+} & BaseProps;
 
 const commonBtnStyling = css`
     letter-spacing: 0.125rem;
@@ -15,20 +18,27 @@ const commonBtnStyling = css`
     border: none;
     outline: none;
     background: none;
+    border-radius: 0.5rem;
     color: ${({ theme }) => theme.colors.light};
-    &:active {
-        transform: scale(1.025);
-    }
 `;
 
-export const CtaButton = styled.button<BaseProps>`
+const includesSVGStyling = css`
+    ${flexMixin('center', 'center', 'row')};
+    gap: 1rem;
+`;
+
+const getCtaStyling = ({ includesSVG }: CtaProps) => {
+    if (includesSVG) return includesSVGStyling;
+};
+
+export const CtaButton = styled.button<CtaProps>`
     ${commonBtnStyling};
     ${buttonInteract};
     color: ${({ theme }) => theme.colors.light};
+    background: ${({ theme }) => theme.colors.lowerDark};
     font-weight: 700;
-    border-radius: 0.15rem;
-    background: transparent;
     transition: all 200ms ease-in-out;
+    ${getCtaStyling};
 `;
 
 export const SecondaryButton = styled.button<BaseProps>`

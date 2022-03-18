@@ -13,6 +13,7 @@ const commonBtnStyling = css`
     max-width: 100%;
     padding: 2rem 4rem;
     max-width: 30rem;
+    height: 100%;
     min-width: 2rem;
     min-height: 2rem;
     border: none;

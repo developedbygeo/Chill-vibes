@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import { flexMixin } from '../../utils/mixins';
 
 const StyledControls = styled.section`
@@ -8,10 +9,7 @@ const StyledControls = styled.section`
     & > .time {
         width: 50%;
         display: flex;
-        #time {
-            width: 100%;
-            padding: 1rem 0rem;
-        }
+        align-items: center;
         p {
             padding: 1rem;
         }

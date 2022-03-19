@@ -36,7 +36,7 @@ export const CtaButton = styled.button<CtaProps>`
     ${commonBtnStyling};
     ${buttonInteract};
     color: ${({ theme }) => theme.colors.light};
-    background: ${({ theme }) => theme.colors.lowerDark};
+    background: rgba(${({ theme }) => theme.colors.lightRGB}, 0.05);
     font-weight: 700;
     transition: all 200ms ease-in-out;
     ${getCtaStyling};

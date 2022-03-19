@@ -1,71 +1,74 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
-import { setIsPlaying } from '../../app/trackSlice';
+import { setIsPlaying, skipSong, updateSongDetails } from '../../app/trackSlice';
 
+import { playTrack } from '../../utils/helpers';
+import { BaseProps } from '../../utils/models/props.model';
 import { formatTime } from '../../utils/helpers';
-
+import CustomSlider from '../shared/Slider/CustomSlider';
 import { SecondaryButton } from '../shared/Button.styled';
 import { MdArrowBackIos, MdArrowForwardIos, MdPause, MdPlayArrow } from 'react-icons/md';
 import StyledControls from './Controls.styled';
 
-const Controls = () => {
-    const [songData, setSongData] = useState({ current: 0, duration: 0 });
-    const currentSong = useAppSelector((state) => state.tracks.currentTrack);
+// TODO fix track  end input
+
+const Controls = ({ audioRef }: BaseProps) => {
     const isTrackPlaying = useAppSelector((state) => state.tracks.isCurrentTrackPlaying);
+    const songDetails = useAppSelector((state) => state.tracks.songDetails);
+    const currentTrack = useAppSelector((state) => state.tracks.currentTrack);
     const dispatch = useAppDispatch();
-    const audioRef = useRef<HTMLAudioElement>(null);
-    const { audio } = currentSong;
+
+    const progressPercentage = (songDetails.current / songDetails.duration) * 100;
+    const audioRefAvailable = audioRef && audioRef.current;
 
     const playButton = isTrackPlaying ? <MdPause className="small-icon" /> : <MdPlayArrow className="small-icon" />;
 
     const playHandler = () => {
         dispatch(setIsPlaying());
-        if (audioRef.current && isTrackPlaying) {
+        if (audioRefAvailable && isTrackPlaying) {
             audioRef.current.pause();
         }
-        if (audioRef.current && !isTrackPlaying) {
+        if (audioRefAvailable && !isTrackPlaying) {
             audioRef.current.play();
         }
     };
 
-    const timeUpdateHandler = (e: React.BaseSyntheticEvent) => {
-        const current = e.target.currentTime;
-        const duration = e.target.duration;
-        setSongData({ ...songData, current, duration });
-    };
-
-    const changeTimeHandler = (e: React.BaseSyntheticEvent) => {
-        if (audioRef.current) {
+    const changeInputTimeHandler = (e: React.BaseSyntheticEvent) => {
+        if (audioRefAvailable) {
             audioRef.current.currentTime = e.target.value;
         }
-        setSongData({ ...songData, current: e.target.value });
+        dispatch(updateSongDetails({ current: +e.target.value }));
+    };
+
+    const skipSongHandler = (direction: string) => {
+        dispatch(skipSong(direction));
+        if (audioRef) {
+            playTrack(isTrackPlaying, audioRef);
+        }
     };
 
     return (
         <StyledControls>
             <div className="time">
-                <p>{formatTime(+songData.current)}</p>
-                <input
-                    min={0}
-                    max={songData.duration}
-                    value={songData.current}
-                    onChange={changeTimeHandler}
-                    type="range"
-                    name="song-duration"
-                    id="time"
+                <p>{songDetails.current ? formatTime(+songDetails.current) : '0:00'}</p>
+                <CustomSlider
+                    max={songDetails.duration}
+                    value={songDetails.current}
+                    progress={progressPercentage}
+                    gradient={currentTrack.colors}
+                    onChange={changeInputTimeHandler}
                 />
-                <p>{formatTime(+songData.duration)}</p>
+                <p>{songDetails.duration ? formatTime(+songDetails.duration) : '0:00'}</p>
             </div>
             <div className="ctrl">
-                <SecondaryButton>
+                <SecondaryButton onClick={skipSongHandler.bind(null, 'back')}>
                     <MdArrowBackIos />
                 </SecondaryButton>
                 <SecondaryButton onClick={playHandler}>{playButton}</SecondaryButton>
-                <SecondaryButton>
+                <SecondaryButton onClick={skipSongHandler.bind(null, 'forward')}>
                     <MdArrowForwardIos />
                 </SecondaryButton>
             </div>
-            <audio onTimeUpdate={timeUpdateHandler} onLoadedMetadata={timeUpdateHandler} ref={audioRef} src={audio} />
         </StyledControls>
     );
 };

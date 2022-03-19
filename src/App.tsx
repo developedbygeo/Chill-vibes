@@ -1,6 +1,7 @@
 import Header from './components/Header/Header';
 import Controls from './components/Player/Controls';
-import Player from './components/Player/Player';
+import Player from './components/Player/Details';
+import Library from './components/Library/Library';
 import GlobalStyle from './utils/globalStyle';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
                 <Player />
                 <Controls />
             </main>
+            <Library />
         </>
     );
 }

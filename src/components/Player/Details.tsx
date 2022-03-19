@@ -1,5 +1,5 @@
 import { useAppSelector } from '../../app/hooks';
-import StyledPlayer from './Details.styled';
+import StyledDetails from './Details.styled';
 
 const Details = () => {
     const currentSong = useAppSelector((state) => state.tracks.currentTrack);
@@ -10,14 +10,14 @@ const Details = () => {
     const imageClass = isTrackPlaying ? 'rotate' : '';
 
     return (
-        <StyledPlayer>
+        <StyledDetails>
             <div className="image-container">
                 <img src={cover} alt="song cover" className={imageClass} />
                 <div className="inner"></div>
             </div>
             <h2>{title}</h2>
             <h3>{artist}</h3>
-        </StyledPlayer>
+        </StyledDetails>
     );
 };
 

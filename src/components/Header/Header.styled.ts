@@ -4,7 +4,7 @@ import { flexMixin } from '../../utils/mixins';
 
 const StyledHeader = styled.header`
     & > nav {
-        width: 75%;
+        width: 95%;
         height: 100%;
         margin: auto;
         ${flexMixin('space-between', 'flex-end', 'row')};

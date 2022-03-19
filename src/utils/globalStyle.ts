@@ -69,7 +69,7 @@ h1 {
   font-weight: 500;
 }
 h2 {
-  font-size: 2.8rem;
+  font-size: 2.6rem;
   letter-spacing: 0.15rem;
   font-weight: 500;
 }

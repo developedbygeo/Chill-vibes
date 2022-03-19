@@ -35,7 +35,7 @@ const StyledDetails = styled.section`
     }
 
     .rotate {
-        animation: 10s ${spinning} linear infinite;
+        animation: 15s ${spinning} linear infinite;
     }
 `;
 

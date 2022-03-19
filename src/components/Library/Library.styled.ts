@@ -14,6 +14,13 @@ const StyledLibrary = styled.aside`
     overflow-y: scroll;
     scrollbar-width: thin;
     scrollbar-color: rgba(241, 245, 249, 0.2) transparent;
+    transform: translateX(-100%);
+    transition: all 0.35s ease-in-out;
+    opacity: 0;
+    &.visible {
+        transform: translateX(0%);
+        opacity: 1;
+    }
     h2 {
         padding: 2rem;
     }
@@ -21,6 +28,7 @@ const StyledLibrary = styled.aside`
     ul {
         ${flexMixin('space-around', 'flex-start', 'column')};
         ${maxContainer};
+        gap: 0.5rem;
     }
 
     li {
@@ -28,6 +36,8 @@ const StyledLibrary = styled.aside`
         height: auto;
         gap: 2rem;
         padding: 2rem;
+        cursor: pointer;
+        transition: all 100ms ease;
         & > img {
             width: 50%;
         }
@@ -38,6 +48,11 @@ const StyledLibrary = styled.aside`
         }
         h4 {
             font-weight: 500;
+        }
+        @media (hover: hover) {
+            &:not(.playing):hover {
+                background: rgba(${({ theme }) => theme.colors.lightRGB}, 0.025);
+            }
         }
     }
 
@@ -58,6 +73,9 @@ const StyledLibrary = styled.aside`
         background-color: rgba(241, 245, 249, 0.2);
         border-radius: 20px;
         border: transparent;
+    }
+    .playing {
+        background: ${({ theme }) => theme.colors.lowerDark};
     }
 `;
 

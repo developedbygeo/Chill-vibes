@@ -1,17 +1,9 @@
-import { useAppDispatch } from '../../app/store';
-import { toggleLibrary } from '../../app/uiSlice';
-
+import { BaseProps } from '../../utils/models/props.model';
 import StyledHeader from './Header.styled';
 import { CtaButton } from '../shared/Button.styled';
 import { MdLibraryMusic } from 'react-icons/md';
 
-const Header = () => {
-    const dispatch = useAppDispatch();
-
-    const toggleLibraryHandler = () => {
-        dispatch(toggleLibrary());
-    };
-
+const Header = ({ onToggleLibrary }: BaseProps) => {
     return (
         <StyledHeader>
             <nav>
@@ -19,7 +11,7 @@ const Header = () => {
                     <h1>Chill Vibes</h1>
                 </div>
                 <div className="container">
-                    <CtaButton onClick={toggleLibraryHandler} includesSVG>
+                    <CtaButton onClick={onToggleLibrary} includesSVG>
                         <span>Library</span>
                         <MdLibraryMusic />
                     </CtaButton>

@@ -7,7 +7,7 @@ const StyledHeader = styled.header`
         width: 95%;
         height: 100%;
         margin: auto;
-        ${flexMixin('space-between', 'flex-end', 'row')};
+        ${flexMixin('space-between', 'center', 'row')};
     }
     & > container {
         height: 50%;

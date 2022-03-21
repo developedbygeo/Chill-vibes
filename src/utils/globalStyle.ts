@@ -16,16 +16,19 @@ html{
       font-size: 35%;
     }
     @media ${devices.mobileM}{
-      font-size: 40%;
+      font-size: 50%;
     }
     @media ${devices.mobileL}{
-      font-size: 50%;
+      font-size: 52%;
     }
     @media ${devices.tablet}{
       font-size: 60%;
     }
+    @media ${devices.laptop}{
+      font-size: 62.5%;
+    }
     @media ${devices.laptopL}{
-      font-size: 65.5%;
+      font-size: 65%;
     }
     @media ${devices.desktop}{
       font-size: 70%;
@@ -55,6 +58,9 @@ body{
 header{
     height: 10vh;
     width: 100%;
+    nav{
+      transition: all 600ms ease;
+    }
 }
 main{
     position: relative;
@@ -62,9 +68,21 @@ main{
     width: 100vw;
     margin: auto;
 }
+.App{
+  transition: all 400ms ease;
+
+}
+.app-active{
+  margin-left: 15%;
+  nav{
+    margin: 0;
+    width: 75%;
+    margin-left: auto;
+  }
+}
 
 h1 {
-  font-size: 3.2rem;
+  font-size: 4.2rem;
   letter-spacing: 0.175rem;
   font-weight: 500;
 }

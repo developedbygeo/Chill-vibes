@@ -9,6 +9,9 @@ const myTheme: DefaultTheme = {
         mid: '#222A39',
         light: '#f1f5f9',
         lightRGB: '241, 245, 249',
+        eerieBlack: '31, 31, 31',
+        gray: '92, 92, 92',
+        greenCta: '#5cdb5c',
     },
 };
 

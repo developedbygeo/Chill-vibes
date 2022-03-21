@@ -6,9 +6,10 @@ import { playTrack } from '../../utils/helpers';
 import { BaseProps } from '../../utils/models/props.model';
 import StyledLibrary from './Library.styled';
 import LibraryTrack from './LibraryTrack';
+import { UtilityButton } from '../shared/Button.styled';
+import { MdOutlineClose } from 'react-icons/md';
 
-const Library = ({ audioRef }: BaseProps) => {
-    const isLibraryShown = useAppSelector((state) => state.ui.showLibrary);
+const Library = ({ audioRef, onToggleLibrary, isLibraryShown }: BaseProps) => {
     const allTracks = useAppSelector((state) => state.tracks.data);
     const isTrackPlaying = useAppSelector((state) => state.tracks.isCurrentTrackPlaying);
 
@@ -23,7 +24,12 @@ const Library = ({ audioRef }: BaseProps) => {
 
     return (
         <StyledLibrary className={`${isLibraryShown ? 'visible' : ''}`}>
-            <h2>My Library</h2>
+            <div className="aside-header">
+                <h2>My Library</h2>
+                <UtilityButton onClick={onToggleLibrary}>
+                    <MdOutlineClose />
+                </UtilityButton>
+            </div>
             <ul>
                 {allTracks.map((track) => (
                     <LibraryTrack

@@ -6,8 +6,9 @@ import { spinning } from '../../utils/animations';
 const StyledDetails = styled.section`
     min-height: 60vh;
     ${flexMixin('center', 'center', 'column')};
+    gap: 1.5rem;
     & > .image-container {
-        width: 50%;
+        width: 75%;
         max-width: 50vh;
         position: relative;
         img {
@@ -29,7 +30,7 @@ const StyledDetails = styled.section`
         padding: 3rem 1rem 1rem 1rem;
     }
     & > h3 {
-        font-size: 1.8rem;
+        font-size: 2.4rem;
         letter-spacing: 0.15rem;
         font-weight: 300;
     }

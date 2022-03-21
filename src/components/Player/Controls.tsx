@@ -2,6 +2,8 @@ import React from 'react';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { setIsPlaying, skipSong, updateSongDetails } from '../../app/trackSlice';
 
+import Audio from './Audio';
+
 import { playTrack } from '../../utils/helpers';
 import { BaseProps } from '../../utils/models/props.model';
 import { formatTime } from '../../utils/helpers';
@@ -9,8 +11,6 @@ import CustomSlider from '../shared/Slider/CustomSlider';
 import { SecondaryButton } from '../shared/Button.styled';
 import { MdArrowBackIos, MdArrowForwardIos, MdPause, MdPlayArrow } from 'react-icons/md';
 import StyledControls from './Controls.styled';
-
-// TODO fix track  end input
 
 const Controls = ({ audioRef }: BaseProps) => {
     const isTrackPlaying = useAppSelector((state) => state.tracks.isCurrentTrackPlaying);
@@ -47,29 +47,43 @@ const Controls = ({ audioRef }: BaseProps) => {
         }
     };
 
+    const trackEndHandler = () => {
+        dispatch(skipSong('forward'));
+        if (audioRef) {
+            setTimeout(() => {
+                playTrack(isTrackPlaying, audioRef);
+            });
+        }
+    };
+
     return (
-        <StyledControls>
-            <div className="time">
-                <p>{songDetails.current ? formatTime(+songDetails.current) : '0:00'}</p>
-                <CustomSlider
-                    max={songDetails.duration}
-                    value={songDetails.current}
-                    progress={progressPercentage}
-                    gradient={currentTrack.colors}
-                    onChange={changeInputTimeHandler}
-                />
-                <p>{songDetails.duration ? formatTime(+songDetails.duration) : '0:00'}</p>
-            </div>
-            <div className="ctrl">
-                <SecondaryButton onClick={skipSongHandler.bind(null, 'back')}>
-                    <MdArrowBackIos />
-                </SecondaryButton>
-                <SecondaryButton onClick={playHandler}>{playButton}</SecondaryButton>
-                <SecondaryButton onClick={skipSongHandler.bind(null, 'forward')}>
-                    <MdArrowForwardIos />
-                </SecondaryButton>
-            </div>
-        </StyledControls>
+        <>
+            <StyledControls>
+                <div className="time">
+                    <p>{songDetails.current ? formatTime(+songDetails.current) : '0:00'}</p>
+                    <CustomSlider
+                        max={songDetails.duration}
+                        value={songDetails.current}
+                        progress={progressPercentage}
+                        gradient={currentTrack.colors}
+                        onChange={changeInputTimeHandler}
+                    />
+                    <p>{songDetails.duration ? formatTime(+songDetails.duration) : '0:00'}</p>
+                </div>
+                <div className="ctrl">
+                    <SecondaryButton onClick={skipSongHandler.bind(null, 'back')}>
+                        <MdArrowBackIos />
+                    </SecondaryButton>
+                    <SecondaryButton className={isTrackPlaying ? 'pause' : 'play'} onClick={playHandler}>
+                        {playButton}
+                    </SecondaryButton>
+                    <SecondaryButton onClick={skipSongHandler.bind(null, 'forward')}>
+                        <MdArrowForwardIos />
+                    </SecondaryButton>
+                </div>
+            </StyledControls>
+            <Audio ref={audioRef} onTrackEnd={trackEndHandler} />
+        </>
     );
 };
 

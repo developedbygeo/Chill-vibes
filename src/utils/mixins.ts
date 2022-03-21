@@ -19,22 +19,6 @@ export const maxContainer = css`
     width: 100%;
 `;
 
-export const buttonInteract = css`
-    transition: all 100ms ease-in-out;
-    position: relative;
-    @media (hover: hover) {
-        &:hover {
-            color: ${({ theme }) => theme.colors.brand};
-            transform: scale(1.05);
-            box-shadow: 0px 0px 23px -10px rgba(${({ theme }) => theme.colors.lightRGB}, 0.25);
-        }
-    }
-    &:active {
-        transform: scale(1.1);
-        box-shadow: inset 0px 0px 28px 5px rgba(0, 0, 0, 0.35);
-    }
-`;
-
 export const customContainer = (h: string, w: string) => css`
     height: ${h}%;
     width: ${w}%;

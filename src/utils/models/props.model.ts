@@ -7,6 +7,8 @@ export type BaseProps = PropsLayout & {
     onClick?: () => void;
     onChange?: (id: number) => void;
     onBlur?: () => void;
+    onToggleLibrary?: () => void;
+    isLibraryShown?: boolean;
 };
 
 export type StyledProps = BaseProps & {

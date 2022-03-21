@@ -5,7 +5,7 @@ const StyledInputWrapper = styled.div`
     display: flex;
     align-items: center;
     width: 100%;
-    height: 1rem;
+    height: 2rem;
     border-radius: 1rem;
     overflow: hidden;
 
@@ -24,15 +24,15 @@ const StyledInputWrapper = styled.div`
     input[type='range']::-webkit-slider-thumb {
         -webkit-appearance: none;
         height: 1.6rem;
-        width: 1.2rem;
-        background: ${({ theme }) => theme.colors.brand};
+        width: 2rem;
+        background: ${({ theme }) => theme.colors.lowerDark};
         border-radius: 50%;
         border: 2px solid ${({ theme }) => theme.colors.light};
     }
     input[type='range']::-moz-range-thumb {
         height: 1.6rem;
         width: 1.2rem;
-        background: ${({ theme }) => theme.colors.brand};
+        background: ${({ theme }) => theme.colors.lowerDark};
         border-radius: 50%;
         border: 2px solid ${({ theme }) => theme.colors.light};
     }

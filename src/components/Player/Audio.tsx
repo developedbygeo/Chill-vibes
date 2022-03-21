@@ -2,7 +2,11 @@ import React from 'react';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { updateSongDetails } from '../../app/trackSlice';
 
-const Audio = React.forwardRef<HTMLAudioElement>((props, ref) => {
+type AudioProps = {
+    onTrackEnd: () => void;
+};
+
+const Audio = React.forwardRef<HTMLAudioElement, AudioProps>(({ onTrackEnd }, ref) => {
     const currentSong = useAppSelector((state) => state.tracks.currentTrack);
     const dispatch = useAppDispatch();
 
@@ -16,7 +20,13 @@ const Audio = React.forwardRef<HTMLAudioElement>((props, ref) => {
 
     return (
         <>
-            <audio onTimeUpdate={timeUpdateHandler} onLoadedMetadata={timeUpdateHandler} ref={ref} src={audio} />
+            <audio
+                onTimeUpdate={timeUpdateHandler}
+                onLoadedMetadata={timeUpdateHandler}
+                onEnded={onTrackEnd}
+                ref={ref}
+                src={audio}
+            />
         </>
     );
 });

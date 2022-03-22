@@ -7,12 +7,15 @@ const Details = () => {
 
     const { title, artist, cover } = currentSong;
 
-    const imageClass = isTrackPlaying ? 'rotate' : '';
-
     return (
         <StyledDetails>
             <div className="image-container">
-                <img src={cover} alt="current song cover" className={imageClass} />
+                <img
+                    src={cover}
+                    alt="current song cover"
+                    className="rotate"
+                    style={{ animationPlayState: isTrackPlaying ? 'running' : 'paused' }}
+                />
                 <div className="inner"></div>
             </div>
             <h2 data-testid="song-title">{title}</h2>

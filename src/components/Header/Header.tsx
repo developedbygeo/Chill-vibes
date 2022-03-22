@@ -11,7 +11,7 @@ const Header = ({ onToggleLibrary }: BaseProps) => {
                     <h1>Chill Vibes</h1>
                 </div>
                 <div className="container">
-                    <CtaButton onClick={onToggleLibrary} includesSVG>
+                    <CtaButton onClick={onToggleLibrary} includesSVG title="Toggle Library">
                         <span>Library</span>
                         <MdLibraryMusic />
                     </CtaButton>

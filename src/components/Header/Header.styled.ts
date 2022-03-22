@@ -15,6 +15,11 @@ const StyledHeader = styled.header`
     h1 {
         padding: 1rem 0rem;
     }
+    @media screen and (max-width: 480px) {
+        button {
+            padding: 1rem 3rem;
+        }
+    }
 `;
 
 export default StyledHeader;

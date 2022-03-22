@@ -10,37 +10,37 @@ const GlobalStyle = createGlobalStyle`
 html{
     font-size: 62.5%;
     @media ${devices.mobileSS}{
-      font-size: 27%;
+      font-size: 20%;
     }
     @media ${devices.mobileS}{
       font-size: 35%;
     }
     @media ${devices.mobileM}{
-      font-size: 50%;
+      font-size: 42%;
     }
     @media ${devices.mobileL}{
-      font-size: 52%;
+      font-size: 45%;
     }
     @media ${devices.tablet}{
-      font-size: 60%;
+      font-size: 48%;
     }
     @media ${devices.laptop}{
-      font-size: 62.5%;
+      font-size: 50%;
     }
     @media ${devices.laptopL}{
-      font-size: 65%;
+      font-size: 55%;
     }
     @media ${devices.desktop}{
-      font-size: 70%;
+      font-size: 65%;
     }
     @media ${devices.landscapeMobileSS}{
-      font-size: 22%;
+      font-size: 18%;
     }
     @media ${devices.landscapeMobileS}{
-      font-size: 30%;
+      font-size: 24%;
     }
     @media ${devices.landscapeMobileL}{
-      font-size: 45%;
+      font-size: 32%;
     }
     @media ${devices.desktop4K}{
       font-size: 110%;
@@ -64,13 +64,17 @@ header{
 }
 main{
     position: relative;
-    height: 90vh;
+    height: 85vh;
     width: 100vw;
     margin: auto;
 }
+footer{
+  height: 5vh;
+  width: 100%;
+}
 .App{
-  transition: all 400ms ease;
-
+  transition: all 200ms ease;
+  overflow: hidden;
 }
 .app-active{
   margin-left: 15%;
@@ -78,6 +82,9 @@ main{
     margin: 0;
     width: 75%;
     margin-left: auto;
+  }
+  @media ${devices.landscapeMobileS}{
+    margin-left: 18.5%;
   }
 }
 

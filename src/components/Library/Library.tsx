@@ -26,9 +26,19 @@ const Library = ({ audioRef, onToggleLibrary, isLibraryShown }: BaseProps) => {
         <StyledLibrary className={`${isLibraryShown ? 'visible' : ''}`}>
             <div className="aside-header">
                 <h2>My Library</h2>
-                <UtilityButton onClick={onToggleLibrary}>
+                <UtilityButton onClick={onToggleLibrary} title="Toggle Library Off">
                     <MdOutlineClose />
                 </UtilityButton>
+            </div>
+            <div className="info">
+                <p>
+                    Looking for more awesome music? Check out{' '}
+                    <span>
+                        <a href="https://chillhop.com/" target="_blank" rel="noreferrer" title="Chillhop Music">
+                            Chillhop.com
+                        </a>
+                    </span>
+                </p>
             </div>
             <ul>
                 {allTracks.map((track) => (

@@ -24,14 +24,14 @@ const StyledInputWrapper = styled.div`
     input[type='range']::-webkit-slider-thumb {
         -webkit-appearance: none;
         height: 1.6rem;
-        width: 2rem;
+        width: 1.6rem;
         background: ${({ theme }) => theme.colors.lowerDark};
         border-radius: 50%;
         border: 2px solid ${({ theme }) => theme.colors.light};
     }
     input[type='range']::-moz-range-thumb {
         height: 1.6rem;
-        width: 1.2rem;
+        width: 1.6rem;
         background: ${({ theme }) => theme.colors.lowerDark};
         border-radius: 50%;
         border: 2px solid ${({ theme }) => theme.colors.light};

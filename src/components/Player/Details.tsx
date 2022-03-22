@@ -12,10 +12,10 @@ const Details = () => {
     return (
         <StyledDetails>
             <div className="image-container">
-                <img src={cover} alt="song cover" className={imageClass} />
+                <img src={cover} alt="current song cover" className={imageClass} />
                 <div className="inner"></div>
             </div>
-            <h2>{title}</h2>
+            <h2 data-testid="song-title">{title}</h2>
             <h3>{artist}</h3>
         </StyledDetails>
     );

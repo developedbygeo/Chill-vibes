@@ -1,9 +1,10 @@
 import { useRef, useState } from 'react';
-import Header from './components/Header/Header';
-import Controls from './components/Player/Controls';
-import Player from './components/Player/Details';
-import Library from './components/Library/Library';
 import GlobalStyle from './utils/globalStyle';
+import Header from './components/Header/Header';
+import Player from './components/Player/Details';
+import Controls from './components/Player/Controls';
+import Library from './components/Library/Library';
+import Footer from './components/Footer/Footer';
 
 function App() {
     const audioRef = useRef<HTMLAudioElement>(null);
@@ -20,6 +21,7 @@ function App() {
                 <Controls audioRef={audioRef} />
             </main>
             <Library audioRef={audioRef} onToggleLibrary={libraryToggleHandler} isLibraryShown={libraryShows} />
+            <Footer />
         </div>
     );
 }

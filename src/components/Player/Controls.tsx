@@ -71,13 +71,17 @@ const Controls = ({ audioRef }: BaseProps) => {
                     <p>{songDetails.duration ? formatTime(+songDetails.duration) : '0:00'}</p>
                 </div>
                 <div className="ctrl">
-                    <SecondaryButton onClick={skipSongHandler.bind(null, 'back')}>
+                    <SecondaryButton onClick={skipSongHandler.bind(null, 'back')} title="Previous Track">
                         <MdArrowBackIos />
                     </SecondaryButton>
-                    <SecondaryButton className={isTrackPlaying ? 'pause' : 'play'} onClick={playHandler}>
+                    <SecondaryButton
+                        className={isTrackPlaying ? 'pause' : 'play'}
+                        onClick={playHandler}
+                        title={isTrackPlaying ? 'Pause' : 'Play'}
+                    >
                         {playButton}
                     </SecondaryButton>
-                    <SecondaryButton onClick={skipSongHandler.bind(null, 'forward')}>
+                    <SecondaryButton onClick={skipSongHandler.bind(null, 'forward')} title="Next Track">
                         <MdArrowForwardIos />
                     </SecondaryButton>
                 </div>

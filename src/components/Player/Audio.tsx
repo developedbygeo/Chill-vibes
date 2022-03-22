@@ -26,6 +26,8 @@ const Audio = React.forwardRef<HTMLAudioElement, AudioProps>(({ onTrackEnd }, re
                 onEnded={onTrackEnd}
                 ref={ref}
                 src={audio}
+                title="streaming audio"
+                data-testid="audio"
             />
         </>
     );

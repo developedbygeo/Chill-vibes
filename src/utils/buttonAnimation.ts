@@ -1,8 +1,10 @@
 import { css } from 'styled-components';
 
+import { signatureShadow } from './mixins';
+
 export const buttonAnimation = css`
     & {
-        box-shadow: 0px 5px 10px rgba(${({ theme }) => theme.colors.eerieBlack}, 0.9);
+        ${signatureShadow};
         border-bottom: 4px solid rgba(${({ theme }) => theme.colors.gray}, 0.1);
         @media (hover: hover) {
             &:hover {

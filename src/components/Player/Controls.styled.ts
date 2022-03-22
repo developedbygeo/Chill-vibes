@@ -23,6 +23,16 @@ const StyledControls = styled.section`
         gap: 2rem;
         padding: 1rem;
     }
+    @media ${devices.mobileSS} {
+        & > .ctrl {
+            ${flexMixin('center', 'center', 'row')};
+        }
+    }
+    @media screen and (min-width: 320px) and (orientation: landscape) {
+        & > .ctrl {
+            ${flexMixin('center', 'center', 'row')};
+        }
+    }
     @media screen and (min-width: 608px) {
         & > .ctrl {
             ${flexMixin('center', 'center', 'row')};
@@ -30,7 +40,7 @@ const StyledControls = styled.section`
     }
     @media ${devices.tablet} {
         & > .time {
-            max-width: 60vw;
+            max-width: 45vw;
         }
     }
 `;

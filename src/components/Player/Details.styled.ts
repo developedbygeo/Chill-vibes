@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-import { flexMixin } from '../../utils/mixins';
+import { devices } from '../../utils/breakpoints';
+import { flexMixin, signatureShadow } from '../../utils/mixins';
 import { spinning } from '../../utils/animations';
 
 const StyledDetails = styled.section`
@@ -15,6 +16,7 @@ const StyledDetails = styled.section`
             width: 100%;
             border-radius: 50%;
             transition: all 2s linear;
+            ${signatureShadow};
         }
         .inner {
             position: absolute;
@@ -37,6 +39,9 @@ const StyledDetails = styled.section`
 
     .rotate {
         animation: 15s ${spinning} linear infinite;
+    }
+    @media ${devices.landscapeMobileSS} {
+        gap: 0.5rem;
     }
 `;
 
